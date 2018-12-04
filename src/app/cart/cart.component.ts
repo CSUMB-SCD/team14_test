@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Item } from '../items';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,8 +21,9 @@ export class CartComponent implements OnInit {
   city: string;
   state: string;
   confirmationCart: Item[];
+  inValidQuant: boolean;
 
-  constructor(public userSVC: UsersService, private itemsSVC: ItemsService) {
+  constructor(public userSVC: UsersService, private itemsSVC: ItemsService, private router: Router) {
     // console.log(userSVC.mainUser.cart.length);
     // this.totalPrice = 0;
     // for (const itm of this.userSVC.mainUser.cart) {
@@ -29,6 +31,7 @@ export class CartComponent implements OnInit {
     // }
     this.inCorrectInfo = false;
     this.orderComplete = false;
+    this.inValidQuant = false;
   }
   ngOnInit() {
   }
@@ -54,6 +57,67 @@ export class CartComponent implements OnInit {
     this.userSVC.mainUser.cart = newCart;
     this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
     alert('Item Removed');
+  }
+
+  getItemStock(id: string): number {
+    for (const itm of this.itemsSVC.allItems) {
+      if (itm.id === id) {
+        return itm.stock;
+      }
+    }
+  }
+
+  updateCart(id: string) {
+    if (this.userSVC.mainUser != null) {
+
+      const quant = Number($('#add').val());
+      let updated =  false;
+
+      for (const itm of this.itemsSVC.allItems) {
+        if (itm.id === id) {
+          this.itemsSVC.showItemDetail = itm;
+          break;
+        }
+      }
+
+
+      if (quant <= 0 || quant > this.itemsSVC.showItemDetail.stock) {
+        this.inValidQuant = true;
+      } else {
+        this.inValidQuant = false;
+      }
+
+      if (!this.inValidQuant) {
+        for (const itm of this.userSVC.mainUser.cart) {
+          if (itm.id === this.itemsSVC.showItemDetail.id) {
+            itm.stock = Number(quant);
+            // item.totalPrice = item.price * Number(quant);
+            updated = true;
+            this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
+            alert('Cart Updated');
+            break;
+          }
+        }
+      }
+
+      if (!updated && !this.inValidQuant) {
+        // item.stock = Number(quant);
+        // item.totalPrice = item.price * Number(quant);
+        // tslint:disable-next-line:prefer-const
+        let tempItm: Item = {} as Item;
+        tempItm.id = this.itemsSVC.showItemDetail.id;
+        tempItm.description = this.itemsSVC.showItemDetail.description;
+        tempItm.image = this.itemsSVC.showItemDetail.image;
+        tempItm.name = this.itemsSVC.showItemDetail.name;
+        tempItm.price = this.itemsSVC.showItemDetail.price;
+        tempItm.stock = quant;
+        this.userSVC.mainUser.cart.push(tempItm);
+        this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
+        alert('Cart Updated');
+      }
+    } else {
+      alert('Login - In To Add Items To Cart');
+    }
   }
 
   checkout() {
@@ -116,5 +180,10 @@ export class CartComponent implements OnInit {
     this.zip = '';
     this.city = '';
     this.state = '';
+  }
+
+  detailPageRedirect(item: Item) {
+    this.itemsSVC.showItemDetail = item;
+    this.router.navigate(['/details']);
   }
 }

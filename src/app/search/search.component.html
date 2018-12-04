@@ -25,11 +25,11 @@
   <h3 (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
   <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
   <!-- Description: {{item.description}}<br> -->
-  Price: ${{item.price}}<br>
-  <select *ngIf="item.stock != 0" id="{{item.id}}">
+  <h3 *ngIf="item.stock != 0">Stock: {{item.stock}}</h3>
+  <h3>Price: ${{item.price.toFixed(2)}}</h3>
+  <!-- <select *ngIf="item.stock != 0" id="{{item.id}}">
     Quantity:<option *ngFor="let quant of item.quant_arr" value={{quant}}>{{quant}}</option>
-  </select>
+  </select> -->
   <h2 *ngIf="item.stock == 0">Out of Stock!</h2>
-  <br>
   <button *ngIf="item.stock != 0" (click)="addToCart(item)">Add To Cart</button>
 </div>

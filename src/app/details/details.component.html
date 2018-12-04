@@ -18,7 +18,7 @@
     <h4 *ngIf="itemsSVC.showItemDetail.stock > 0" style="font-family:Courier; font-size: 25px;">Stock: {{itemsSVC.showItemDetail.stock}}<br><br></h4>
     <h4 *ngIf="itemsSVC.showItemDetail.stock <= 0" style="font-family:Courier; font-size: 25px;">Stock: Currently Out Of Stock<br><br></h4>
     <h4 style="font-family:Courier; font-size: 25px;">Price: {{'$' + itemsSVC.showItemDetail.price.toFixed(2)}}<br><br></h4>
-    <h4 *ngIf="itemsSVC.showItemDetail.stock > 0" style="font-family:Courier; font-size: 25px;">Quantity: <input id="add" type="text"><h5 *ngIf="inValidQuant" style="color: red">Incorrect Input</h5><br></h4>
+    <h4 *ngIf="itemsSVC.showItemDetail.stock > 0" style="font-family:Courier; font-size: 25px;">Quantity: <input id="add" type="text"><h5 *ngIf="inValidQuant" style="color: red">Invalid Input</h5><br></h4>
     <button (click)="updateCart()" *ngIf="itemsSVC.showItemDetail.stock > 0">Add To Cart</button>
   </div>
 

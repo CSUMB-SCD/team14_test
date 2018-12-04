@@ -35,12 +35,13 @@ export class SearchComponent implements OnInit {
 
   addToCart(item: Item) {
     if (this.userSVC.mainUser != null) {
-      console.log(item.id);
-      const quant = $('#' + item.id).val();
+      // console.log(item.id);
+      // const quant = $('#' + item.id).val();
       let updated =  false;
       for (const itm of this.userSVC.mainUser.cart) {
         if (itm.id === item.id) {
-          itm.stock = Number(quant);
+          itm.stock = 1;
+          // itm.stock = Number(quant);
           // item.totalPrice = item.price * Number(quant);
           updated = true;
           this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
@@ -58,10 +59,12 @@ export class SearchComponent implements OnInit {
         tempItm.image = item.image;
         tempItm.name = item.name;
         tempItm.price = item.price;
-        tempItm.stock = Number(quant);
+        tempItm.stock = 1;
         this.userSVC.mainUser.cart.push(tempItm);
         this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
       }
+
+      alert('Cart Updated');
     } else {
       alert('Login - In To Add Items To Cart');
     }

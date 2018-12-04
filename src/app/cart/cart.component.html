@@ -8,11 +8,14 @@
 </div>
 <div *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false">
   <div *ngFor="let item of userSVC.mainUser.cart">
-    <h3>{{item.name}}</h3><br>
+    <h3 (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
     <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
     Description: {{item.description}}<br>
-    Quantity: {{item.stock}}<br>
-    Price: ${{item.stock * item.price}}<br>
+    Stock: {{getItemStock(item.id)}}<br>
+    In-Cart: {{item.stock}}<br>
+    Quantity: <input id="add" type="text"><button (click)="updateCart(item.id)">Update</button><br>
+    <h5 *ngIf="inValidQuant" style="color: red">Invalid Input</h5><br>
+    Price: ${{(item.stock * item.price).toFixed(2)}}<br>
     <button (click)="removeItem(item)">Remove Item</button>
   </div>
 </div>
