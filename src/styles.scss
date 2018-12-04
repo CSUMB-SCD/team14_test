@@ -1,14 +1,14 @@
-@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body{
   //background-image: url("./app/images/tesla.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  background-color: #000000;
-  columns: #ffffff;;
+  background-color: #ffffff;
+  columns: #000000;;
   text-decoration: none;
-  color:#ffffff;
+  color:#000000;
 }
-a { color:#ffffff; }
+a { color:#000000; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none;}
 a:focus { text-decoration: none;}
