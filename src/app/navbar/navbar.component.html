@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+<!-- <<<<<<< Updated upstream -->
+    <!-- <mat-toolbar-row> -->
+      <!-- <span>Home Page</span> -->
+      <!-- <span class="example-spacer">
+        <div class="home-nav">
+          <a mat-button routerLink="home">Home</a>
+        </div>
+        <div class ="signin-nav">
+          <a mat-button routerLink="signin" *ngIf="userSVC.mainUser == null">Sign In</a>
+          <a mat-button (click)="logout()" *ngIf="userSVC.mainUser != null">Logout</a>
+        </div>
+        <div class="search-nav">
+          <a mat-button routerLink="search">Search</a>
+        </div>
+        <div class="cart-nav">
+          <a mat-button routerLink="cart">Cart</a>
+        </div> -->
+<!-- ======= -->
+  <!-- aligns text on left of toolbar -->
+  <span>OtterShop</span>
+
+  <!-- creates blank empty center space -->
+  <span class="fill-remaining-space">
+      <span>
+          <a mat-button routerLink="home">Home <mat-icon aria-label>home</mat-icon></a>
+      </span>
+      <span>
+          <a mat-button routerLink="search">Search <mat-icon aria-label>search</mat-icon></a>
+<!-- >>>>>>> Stashed changes -->
+      </span>
+      <span>
+          <a mat-button routerLink="cart">Cart <mat-icon aria-label>shopping_cart</mat-icon></a>
+      </span>
+  </span>
+
+  <!-- aligns text on right of toolbar -->
+  <span>
+      <a mat-button routerLink="signin" *ngIf="userSVC.mainUser == null">Sign In <mat-icon aria-label>account_circle</mat-icon></a>
+      <a mat-button (click)="logout()" *ngIf="userSVC.mainUser != null">Logout</a>
+  </span>
+</mat-toolbar>
+
+        <!-- <mat-icon class="example-icon"><a routerLink="home">home</a></mat-icon> -->
+      <!-- <mat-icon class="example-icon" [matMenuTriggerFor]="menu">menu</mat-icon> -->
+      <!-- <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>shopping_cart</mat-icon>
+            <span><a routerLink="">Cart</a></span>
+          </button>
+          <button mat-menu-item> -->
+            <!-- <button mat-menu-item disabled> -->
+            <!-- <mat-icon>account_box</mat-icon>
+            <span><a routerLink="signin">User Sign-In</a></span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>card_giftcard</mat-icon>
+            <span>Products</span>
+          </button>
+        </mat-menu> -->

@@ -1,0 +1,49 @@
+<h1>Cart</h1>
+
+<div *ngIf="userSVC.mainUser == null">
+  Sign-In To View Cart
+</div>
+<div *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length == 0 && orderComplete == false">
+  <h2>Cart Empty</h2>
+</div>
+<div *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false">
+  <div *ngFor="let item of userSVC.mainUser.cart">
+    <h3>{{item.name}}</h3><br>
+    <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
+    Description: {{item.description}}<br>
+    Quantity: {{item.stock}}<br>
+    Price: ${{item.stock * item.price}}<br>
+    <button (click)="removeItem(item)">Remove Item</button>
+  </div>
+</div>
+<div *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false">
+  <h3>Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+  <h3>Payment Info</h3><br>
+  Name         <input id="name"type="text"><br>
+  Address      <input id="address" type="text"><br>
+  City         <input id="city" type="text"><br>
+  State        <input id="state" type="text"><br>
+  Zip Code     <input id="zip" type="text"><br>
+  Card Number  <input id="cardnum" type="text"><br>
+  Security Pin <input id="pin" type="<text>"><br>
+  <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
+  <button (click)="checkout()">Checkout</button><br><br>
+</div>
+<div *ngIf="orderComplete">
+  <h1>Order Confirmation</h1><br>
+  <h4>Your Order #{{getConfirmNum()}}</h4><br>
+
+  <div *ngFor="let item of confirmationCart">
+    <h3>{{item.name}}</h3><br>
+    <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
+    Description: {{item.description}}<br>
+    Quantity: {{item.stock}}<br>
+    Price: ${{item.stock * item.price}}<br>
+  </div>
+
+  <strong>Name: {{name}}</strong><br>
+  <strong>Shipped To: {{address}} , {{city}} , {{state}} , {{zip}}</strong><br>
+  <strong>Total: $</strong> {{getTotal(confirmationCart).toFixed(2)}}<br>
+  <button (click)="reset()">Continue</button>
+</div>
+

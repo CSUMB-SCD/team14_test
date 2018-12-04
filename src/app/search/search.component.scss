@@ -1,0 +1,23 @@
+.search-title{
+  display:flex;
+  justify-content: center;
+  align-content: center;
+}
+.search-input{
+  display:flex;
+  flex: auto;
+  justify-content: center;
+  width: 100%;
+
+}
+.search-btn{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.search-items {
+  // display: flex;
+  color:white;
+  text-align: center;
+}

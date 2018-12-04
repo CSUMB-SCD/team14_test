@@ -1,0 +1,24 @@
+<div class="register-header">
+    <h1>Register</h1>
+</div>
+<form class="register-form" (submit)="register_user($event)">
+    <div class="user-field">
+      <mat-form-field>
+        <input type="text" id="username" placeholder="Username" matInput placeholder="Username">
+      </mat-form-field>
+    </div>
+    <div *ngIf="is_un_missing">Username is required</div>
+
+    <div class="pass-field">
+      <mat-form-field>
+        <input type="password" id="password" placeholder="Password" matInput placeholder="Password">
+      </mat-form-field>
+    </div>
+    <div *ngIf="is_pw_missing">Password is required</div>
+    <div class="register-btn">
+        <button  mat-raised-button color="primary">Register</button>
+        <a [routerLink]="['/signin']" mat-raised-button color="primary">Cancel</a>
+    </div>
+    <div *ngIf="is_un_taken">User Taken</div>
+</form>
+

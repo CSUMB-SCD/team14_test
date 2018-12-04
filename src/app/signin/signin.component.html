@@ -1,0 +1,31 @@
+<div class="signin-header">
+  <h1>Sign In</h1>
+</div>
+
+<div class="signin-input">
+  <form (submit)="loginUser($event)" action="/home">
+    <!-- Get Username -->
+    <div class="user-field">
+      <mat-form-field>
+        <input type="text" id="username" placeholder="Username" matInput placeholder="Username">
+      </mat-form-field>
+    </div>
+    <!-- Get Password -->
+    <div class="pass-field">
+      <mat-form-field>
+        <input type="password" id="password" placeholder="Password" matInput placeholder="Password">
+      </mat-form-field>
+    </div>
+   <!-- Login Button -->
+   <div class="login-field">
+      <button type="submit" value="Submit" mat-raised-button color="primary">Login</button>
+      <a mat-button [routerLink]="['/register']" mat-raised-button color="primary">Register</a>
+   </div>
+
+  </form>
+</div>
+
+<!-- Invalid Login Error -->
+<div *ngIf="!is_login_valid" class="error-field">
+  <h3>Login is INVALID</h3>
+</div>

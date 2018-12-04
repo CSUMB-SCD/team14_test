@@ -1,0 +1,67 @@
+// .signin-box{
+//   display:flex;
+//   align-items: center;
+//   flex-direction: column;
+// }
+// .signin-title{
+//   display: flex;
+//   flex-direction: column;
+//   color:#ffffff;
+// }
+// .signin-input{
+//   display: flex;
+//   flex-direction: column;
+//   color:#000000;
+// }
+
+.signin-header{
+  display: flex;
+  justify-content: center;
+}
+.signin-input{
+  display: flex;
+  flex: auto;
+  justify-content: center;
+}
+
+.login-field{
+  display: flex;
+  flex: auto;
+  justify-content: center;
+}
+
+.register-field{
+  display: flex;
+  flex: auto;
+  justify-content: center;
+}
+
+.error-field{
+  display: flex;
+  flex: auto;
+  justify-content: center;
+}
+// .signin-input{
+//   grid-template-areas:
+//   "<grid-area-name> | . | none | ..."
+//   "...";
+// }
+// .user-field{
+//   grid-area: top;
+// }
+// .pass-field{
+//   grid-area: middle;
+// }
+// .login-field{
+//   grid-area: bottom;
+// }
+
+// .signin-input{
+//   grid-template-columns: 50px 50px 50px 50px;
+//   grid-template-rows: auto;
+//   grid-template-areas:
+//     "top top top top"
+//     "middle middle . ."
+//     "bottom bottom bottom bottom";
+// }
+

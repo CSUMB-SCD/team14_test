@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<div class="row" *ngIf="itemsSVC.showItemDetail != null" >
+  <strong><h1 style="font-family:Courier" class="text-center">{{itemsSVC.showItemDetail.name}}</h1></strong><br>
+  <div class="col-md-4">
+    <img src="{{itemsSVC.showItemDetail.image}}" height="600" width="600" class="img-thumbnail">
+  </div>
+  <div class="col-md-8">
+    <br><br>
+    <h4 style="font-family:Courier; font-size: 25px;">"{{itemsSVC.showItemDetail.description}}"</h4><br>
+    <h4 *ngIf="itemsSVC.showItemDetail.stock > 0" style="font-family:Courier; font-size: 25px;">Stock: {{itemsSVC.showItemDetail.stock}}<br><br></h4>
+    <h4 *ngIf="itemsSVC.showItemDetail.stock <= 0" style="font-family:Courier; font-size: 25px;">Stock: Currently Out Of Stock<br><br></h4>
+    <h4 style="font-family:Courier; font-size: 25px;">Price: {{'$' + itemsSVC.showItemDetail.price.toFixed(2)}}<br><br></h4>
+    <h4 *ngIf="itemsSVC.showItemDetail.stock > 0" style="font-family:Courier; font-size: 25px;">Quantity: <input id="add" type="text"><h5 *ngIf="inValidQuant" style="color: red">Incorrect Input</h5><br></h4>
+    <button (click)="updateCart()" *ngIf="itemsSVC.showItemDetail.stock > 0">Add To Cart</button>
+    <!-- <div [@popOverState]="stateName">
+      Was Good
+    </div>
+    <button (click)="toggle()">Toggle</button> -->
+
+  </div>
+
+</div>
+
