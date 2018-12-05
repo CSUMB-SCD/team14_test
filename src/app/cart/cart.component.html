@@ -32,7 +32,7 @@
   <h3 style="font-family: Courier; text-align: center">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
   <button (click)="hitCheckOut()">Checkout</button>
 </div>
-<div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkout != false && checkoutOut != false">
+<div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut != false">
 
   <h3>Payment Info</h3><br>
   Name         <input id="name"type="text"><br>
