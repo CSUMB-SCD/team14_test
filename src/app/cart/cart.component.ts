@@ -186,4 +186,12 @@ export class CartComponent implements OnInit {
     this.itemsSVC.showItemDetail = item;
     this.router.navigate(['/details']);
   }
+
+  onGIF() {
+    this.router.navigate(['/signin']);
+  }
+
+  onEmptyCart() {
+    this.router.navigate(['/search']);
+  }
 }
