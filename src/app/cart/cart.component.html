@@ -17,7 +17,7 @@
   <br>
   <img (click)="onEmptyCart()" class="center" height="500" width="300" src="https://www.zoe.menu/assets/images/empty_cart.gif">
 </div>
-<div class="text-center" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false">
+<div class="text-center" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut == false">
   <div *ngFor="let item of userSVC.mainUser.cart">
     <h3 style="font-family: Courier; text-align: center" (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
     <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
@@ -29,9 +29,11 @@
     <h5 style="font-family: Courier; text-align: center">Price: ${{(item.stock * item.price).toFixed(2)}}</h5><br>
     <button (click)="removeItem(item)">Remove Item</button>
   </div>
-</div>
-<div *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false">
   <h3 style="font-family: Courier; text-align: center">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+  <button (click)="hitCheckOut()">Checkout</button>
+</div>
+<div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkout != false && checkoutOut != false">
+
   <h3>Payment Info</h3><br>
   Name         <input id="name"type="text"><br>
   Address      <input id="address" type="text"><br>
@@ -41,23 +43,23 @@
   Card Number  <input id="cardnum" type="text"><br>
   Security Pin <input id="pin" type="<text>"><br>
   <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
+  <h3 style="font-family: Courier">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
   <button (click)="checkout()">Checkout</button><br><br>
 </div>
-<div *ngIf="orderComplete">
+<div class="text-center" style="font-family: Courier" *ngIf="orderComplete">
   <h1>Order Confirmation</h1><br>
   <h4>Your Order #{{getConfirmNum()}}</h4><br>
 
   <div *ngFor="let item of confirmationCart">
     <h3>{{item.name}}</h3><br>
     <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
-    Description: {{item.description}}<br>
-    Quantity: {{item.stock}}<br>
-    Price: ${{item.stock * item.price}}<br>
+    <h5>{{item.description}}</h5><br>
+    <h5>Quantity: {{item.stock}}</h5><br>
+    <h5>Price: ${{(item.stock * item.price).toFixed(2)}}</h5><br>
   </div>
 
-  <strong>Name: {{name}}</strong><br>
-  <strong>Shipped To: {{address}} , {{city}} , {{state}} , {{zip}}</strong><br>
-  <strong>Total: $</strong> {{getTotal(confirmationCart).toFixed(2)}}<br>
+  <h3>Name: {{name}}</h3><br>
+  <h3>Shipped To: {{address}} , {{city}} , {{state}} , {{zip}}</h3><br>
+  <h3>Total: ${{(getTotal(confirmationCart)).toFixed(2)}}</h3><br>
   <button (click)="reset()">Continue</button>
-</div>
-
+  </div>
