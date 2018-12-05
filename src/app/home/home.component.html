@@ -2,7 +2,7 @@
   Welcome To The Otter Shop Co.
 </div>
 
-<ngb-carousel class="text-center container" [showNavigationArrows]="true" [showNavigationIndicators]="false" *ngIf="images">
+<ngb-carousel class="text-center container" [showNavigationArrows]="false" [showNavigationIndicators]="false" *ngIf="images">
   <ng-template ngbSlide *ngFor="let image of images">
     <img class='img-main-carousel' [src]="image">
     <div class="carousel-caption">
