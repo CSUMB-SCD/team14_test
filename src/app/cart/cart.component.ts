@@ -65,6 +65,11 @@ export class CartComponent implements OnInit {
     alert('Item Removed');
   }
 
+  // checkStm(): boolean {
+  //   return this.userSVC.mainUser !== null && this.userSVC.mainUser.cart.length > 0 && this.orderComplete === 
+  //   false && this.checkout !== false && this.checkoutOut !== false;
+  // }
+
   getItemStock(id: string): number {
     for (const itm of this.itemsSVC.allItems) {
       if (itm.id === id) {
