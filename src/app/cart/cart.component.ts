@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
   state: string;
   confirmationCart: Item[];
   inValidQuant: boolean;
+  checkoutOut: boolean;
 
   constructor(public userSVC: UsersService, private itemsSVC: ItemsService, private router: Router) {
     // console.log(userSVC.mainUser.cart.length);
@@ -32,8 +33,13 @@ export class CartComponent implements OnInit {
     this.inCorrectInfo = false;
     this.orderComplete = false;
     this.inValidQuant = false;
+    this.checkoutOut = false;
   }
   ngOnInit() {
+  }
+
+  hitCheckOut() {
+    this.checkoutOut = true;
   }
 
   getTotal(cart: Item[]): number {
@@ -164,6 +170,7 @@ export class CartComponent implements OnInit {
       this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
       this.itemsSVC.itemRefresh();
       this.orderComplete = true;
+      this.checkoutOut = false;
     }
   }
 
