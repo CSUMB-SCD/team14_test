@@ -8,8 +8,32 @@
   padding: 2%;
 }
 
-ngb-carousel {
-  margin: auto; width: 50%; height: auto;
+.container {
+  padding: 0px;
+  width: 40%;
+  max-height: 50%;
 }
 
+.img-main-carousel {
+  width: 100%;
+  max-height: 20%;
+}
 
+.clothing_images_parent {
+  display: flex;
+  justify-content: center;
+}
+
+// Product Image Sizes
+.c_image_child {
+  width: 200px;
+  height: 200px;
+  margin: 3%;
+}
+
+// Hover mouse over image
+//  - Indicates what image you're on
+div img:hover {
+  transform: scale(0.97);
+  transition: 0.5s all ease;
+}
