@@ -1,21 +1,30 @@
-<div class="signin-header">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div style="font-family: Courier" class="signin-header">
   <h1>Sign In</h1>
 </div>
 
-<div class="signin-input">
-  <form (submit)="loginUser($event)" action="/home">
+<div style="font-family: Courier" class="signin-input">
+  <form class="text-center" (submit)="loginUser($event)" action="/home">
     <!-- Get Username -->
     <div class="user-field">
       <mat-form-field>
-        <input type="text" id="username" placeholder="Username" matInput placeholder="Username">
+        Username:<input type="text" id="username" placeholder="Username" matInput placeholder="Username"><br>
       </mat-form-field>
     </div>
     <!-- Get Password -->
     <div class="pass-field">
       <mat-form-field>
-        <input type="password" id="password" placeholder="Password" matInput placeholder="Password">
+        Password:<input type="password" id="password" placeholder="Password" matInput placeholder="Password"><br>
       </mat-form-field>
-    </div>
+  </div>
+  <!-- v -->
    <!-- Login Button -->
    <div class="login-field">
       <button type="submit" value="Submit" mat-raised-button color="primary">Login</button>
@@ -27,5 +36,5 @@
 
 <!-- Invalid Login Error -->
 <div *ngIf="!is_login_valid" class="error-field">
-  <h3>Login is INVALID</h3>
+  <h3 style="font-family: Courier">Login is INVALID</h3>
 </div>
