@@ -24,6 +24,9 @@ export class CartComponent implements OnInit {
   inValidQuant: boolean;
   checkoutOut: boolean;
 
+  og_checkout_total: number;
+  checkout_total: string;
+
   constructor(public userSVC: UsersService, private itemsSVC: ItemsService, private router: Router) {
     // console.log(userSVC.mainUser.cart.length);
     // this.totalPrice = 0;
@@ -40,6 +43,23 @@ export class CartComponent implements OnInit {
 
   hitCheckOut() {
     this.checkoutOut = true;
+    this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
+    this.checkout_total = this.og_checkout_total.toFixed(2);
+  }
+
+  applyPromo() {
+    const passed_in_promo = $('#promo').val();
+    const is_promo_3 = passed_in_promo === 'a3wouldbegreat';
+    const is_promo_2 = passed_in_promo === '2isokaytoo';
+
+    if (is_promo_3) {
+      this.checkout_total = '0.00';
+    } else if (is_promo_2) {
+      const num = this.og_checkout_total / 2;
+      this.checkout_total = num.toFixed(2);
+    } else {
+      this.checkout_total = this.og_checkout_total.toFixed(2);
+    }
   }
 
   getTotal(cart: Item[]): number {
@@ -66,7 +86,7 @@ export class CartComponent implements OnInit {
   }
 
   // checkStm(): boolean {
-  //   return this.userSVC.mainUser !== null && this.userSVC.mainUser.cart.length > 0 && this.orderComplete === 
+  //   return this.userSVC.mainUser !== null && this.userSVC.mainUser.cart.length > 0 && this.orderComplete ===
   //   false && this.checkout !== false && this.checkoutOut !== false;
   // }
 
