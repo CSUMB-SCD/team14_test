@@ -61,6 +61,7 @@ mat-card {
 }
 
 .card-content{
+  font-family: 'Josefin Sans', sans-serif;
   display: flex;
   flex: auto;
   justify-content: center;
@@ -69,8 +70,13 @@ mat-card {
 
 }
 mat-card-actions{
+  font-family: 'Josefin Sans', sans-serif;
   display: flex;
   flex: auto;
   justify-content: center;
   align-items: center;
+}
+.item-name{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
 }
