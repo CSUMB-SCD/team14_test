@@ -4,15 +4,44 @@
 </div>
 
 <!-- Carousel -->
-<ngb-carousel class="text-center container" [showNavigationArrows]="true" [showNavigationIndicators]="false" *ngIf="images">
-  <ng-template ngbSlide *ngFor="let image of images">
-    <img class='img-main-carousel' [src]="image">
-    <div class="carousel-caption">
-      <h3>Otter Wear</h3>
-      <button [routerLink]="['/search']">Shop Now</button>
-    </div>
-  </ng-template>
-</ngb-carousel>
+<div class="top_side">
+  <ngb-carousel class="text-center container" [showNavigationArrows]="false" [showNavigationIndicators]="false" *ngIf="images">
+    <ng-template ngbSlide *ngFor="let image of images">
+      <img class='img-main-carousel' [src]="image">
+      <div class="carousel-caption">
+        <h3>OTTER WEAR</h3>
+        <button [routerLink]="['/search']">Shop Now</button>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <!-- About Us -->
+  <!-- Photo + Descripition -->
+  <div class="about">
+    <img class="about_img" src="https://cdn.shopify.com/s/files/1/2445/4975/files/SWEATERSweb2_1800x.jpg?v=1541543869">
+    <table>
+      <tr>
+        <td>
+          <div class="about_des">
+            <p class="title">Welcome to Ottershop Co.</p>
+            <p class="des">
+              We're proud to announce our upcoming exclusive most
+              greatest apparel yet. Our hopes to becoming a
+              better clothing brand is to provide a convenient
+              and inspiring experience for our customers. Our brand
+              reaches customers in stores and online.
+              and online.
+            </p>
+            <p class="des">
+              Our brands offer customers a wealth of styles and trends
+              within fashion. We work to improve of our apparel to always be relevant.
+            </p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 <!-- New Arrivals -->
 <div class="divided_line hp_midtitle txc t_dark" style="text-align: center;">
