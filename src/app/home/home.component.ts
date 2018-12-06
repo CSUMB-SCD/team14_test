@@ -1,5 +1,8 @@
+import { Item } from '../items';
+import { Router } from '@angular/router';
+import { ItemsService } from '../items.service';
 import { Component, OnInit } from '@angular/core';
-
+import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-home',
@@ -9,21 +12,24 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   images = [
-    'http://about.hm.com/content/dam/hmgroup/groupsite/images/teaser/Career/values-career-teaser.jpg/_jcr_content/renditions/cq5dam.web.976.654.jpeg',
     'https://sgbonline.com/wp-content/uploads/2016/06/PacSun_062116.jpg',
     'https://images-na.ssl-images-amazon.com/images/I/A1Gb7%2B-DJ5L._UX679_.jpg'
   ];
 
-  clothing_images = [
-    'https://images-na.ssl-images-amazon.com/images/I/A1FpwwB5J5L._UX679_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/81jd5NigoeL._UX679_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/A1Gb7%2B-DJ5L._UX679_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/81x3RtQemGL._UX466_.jpg'
-  ];
+  total_items: number;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public itemSVC: ItemsService, private router: Router) {
+    this.total_items = 0;
   }
 
+  ngOnInit() {
+    if (this.itemSVC != null && this.itemSVC.allItems != null) {
+      this.total_items = this.itemSVC.allItems.length;
+    }
+  }
+
+  detailPageRedirect(item: Item) {
+    this.itemSVC.showItemDetail = item;
+    this.router.navigate(['/details']);
+  }
 }
