@@ -33,18 +33,22 @@
   <button (click)="hitCheckOut()">Checkout</button>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut != false">
-
-  <h3>Payment Info</h3><br>
-  Name         <input id="name"type="text"><br>
-  Address      <input id="address" type="text"><br>
-  City         <input id="city" type="text"><br>
-  State        <input id="state" type="text"><br>
-  Zip Code     <input id="zip" type="text"><br>
-  Card Number  <input id="cardnum" type="text"><br>
-  Security Pin <input id="pin" type="<text>"><br>
-  <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
-  <h3 style="font-family: Courier">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
-  <button (click)="checkout()">Checkout</button><br><br>
+  <div>
+    <h3>Payment Info</h3><br>
+    Name         <input id="name"type="text"><br>
+    Address      <input id="address" type="text"><br>
+    City         <input id="city" type="text"><br>
+    State        <input id="state" type="text"><br>
+    Zip Code     <input id="zip" type="text"><br>
+    Card Number  <input id="cardnum" type="text"><br>
+    Security Pin <input id="pin" type="<text>"><br>
+    <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
+    <h3 style="font-family: Courier">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+    <button (click)="checkout()">Checkout</button><br><br>
+  </div>
+  <div class="promo_code">
+      Promo Code:         <input id="promo"type=""><br>
+  </div>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="orderComplete">
   <h1>Order Confirmation</h1><br>

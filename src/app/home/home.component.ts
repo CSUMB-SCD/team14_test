@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public itemSVC: ItemsService, private router: Router) {
     this.total_items = 0;
+
   }
 
   ngOnInit() {
