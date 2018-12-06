@@ -21,7 +21,6 @@
   <div *ngFor="let item of userSVC.mainUser.cart">
     <h3 style="font-family: Courier; text-align: center" (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
     <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
-    <h5 style="font-family: Courier; text-align: center">Description: {{item.description}}</h5><br>
     <h5 style="font-family: Courier; text-align: center">Stock: {{getItemStock(item.id)}}</h5><br>
     <h5 style="font-family: Courier; text-align: center">In-Cart: {{item.stock}}</h5><br>
     <h5 style="font-family: Courier; text-align: center">Quantity</h5><input style="font-family: Courier; text-align: center" id="add" type="text"><button (click)="updateCart(item.id)">Update</button><br>
@@ -29,22 +28,29 @@
     <h5 style="font-family: Courier; text-align: center">Price: ${{(item.stock * item.price).toFixed(2)}}</h5><br>
     <button (click)="removeItem(item)">Remove Item</button>
   </div>
-  <h3 style="font-family: Courier; text-align: center">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
-  <button (click)="hitCheckOut()">Checkout</button>
+  <div>
+    <h3 style="font-family: Courier; text-align: center">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+    <button (click)="hitCheckOut()">Checkout</button>
+  </div>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut != false">
-
-  <h3>Payment Info</h3><br>
-  Name         <input id="name"type="text"><br>
-  Address      <input id="address" type="text"><br>
-  City         <input id="city" type="text"><br>
-  State        <input id="state" type="text"><br>
-  Zip Code     <input id="zip" type="text"><br>
-  Card Number  <input id="cardnum" type="text"><br>
-  Security Pin <input id="pin" type="<text>"><br>
-  <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
-  <h3 style="font-family: Courier">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
-  <button (click)="checkout()">Checkout</button><br><br>
+  <div>
+    <h3>Payment Info</h3><br>
+    Name         <input id="name"type="text"><br>
+    Address      <input id="address" type="text"><br>
+    City         <input id="city" type="text"><br>
+    State        <input id="state" type="text"><br>
+    Zip Code     <input id="zip" type="text"><br>
+    Card Number  <input id="cardnum" type="text"><br>
+    Security Pin <input id="pin" type="<text>"><br>
+    <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
+    <h3 style="font-family: Courier">Total: ${{checkout_total}}</h3><br><br>
+    <button (click)="checkout()">Checkout</button><br><br>
+  </div>
+  <div class="promo_code">
+      Promo Code:         <input id="promo" type="text"><br>
+      <button (click)="applyPromo($event)">Apply</button>
+  </div>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="orderComplete">
   <h1>Order Confirmation</h1><br>
@@ -60,6 +66,6 @@
 
   <h3>Name: {{name}}</h3><br>
   <h3>Shipped To: {{address}} , {{city}} , {{state}} , {{zip}}</h3><br>
-  <h3>Total: ${{(getTotal(confirmationCart)).toFixed(2)}}</h3><br>
+  <h3>Total: ${{checkout_total}}</h3><br>
   <button (click)="reset()">Continue</button>
   </div>
