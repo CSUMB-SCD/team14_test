@@ -26,6 +26,7 @@ export class CartComponent implements OnInit {
 
   og_checkout_total: number;
   checkout_total: string;
+  confirm_num: number;
 
   constructor(public userSVC: UsersService, private itemsSVC: ItemsService, private router: Router) {
     // console.log(userSVC.mainUser.cart.length);
@@ -45,6 +46,7 @@ export class CartComponent implements OnInit {
     this.checkoutOut = true;
     this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
     this.checkout_total = this.og_checkout_total.toFixed(2);
+    this.confirm_num = Math.floor(Math.random() * Math.floor(100000000));
   }
 
   applyPromo() {
@@ -200,7 +202,7 @@ export class CartComponent implements OnInit {
   }
 
   getConfirmNum(): number {
-    return Math.floor(Math.random() * Math.floor(100000000));
+    return this.confirm_num;
   }
 
   reset() {
