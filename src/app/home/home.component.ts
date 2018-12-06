@@ -18,17 +18,10 @@ export class HomeComponent implements OnInit {
     'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/1900x725-Brushed-Flannel-Navy-Banner-3_1900x725.jpg?v=1543889720'
   ];
 
-  total_items: number;
-
   constructor(public itemSVC: ItemsService, private router: Router) {
-    this.total_items = 0;
-
   }
 
   ngOnInit() {
-    if (this.itemSVC != null && this.itemSVC.allItems != null) {
-      this.total_items = this.itemSVC.allItems.length;
-    }
   }
 
   detailPageRedirect(item: Item) {
