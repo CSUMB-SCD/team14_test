@@ -12,10 +12,17 @@
   </ng-template>
 </ngb-carousel>
 
+<div class="divided_line hp_midtitle txc t_dark" style="text-align: center;">
+  <span>
+    New Arrivals
+  </span>
+</div>
+
 <div class="wrapper">
   <div class="clothing_images_parent" *ngFor="let i of [itemSVC.allItems.length - 1, itemSVC.allItems.length - 2, itemSVC.allItems.length - 3, itemSVC.allItems.length - 4]">
     <img class="c_image_child" [src]="itemSVC.allItems[i].image" (click)="detailPageRedirect(itemSVC.allItems[i])">
-    <h3>Price: ${{itemSVC.allItems[i].price.toFixed(2)}}</h3>
+    <h5 class="c_name_child">{{itemSVC.allItems[i].name}}</h5>
+    <h3 class="c_price_child">Price: ${{itemSVC.allItems[i].price.toFixed(2)}}</h3>
   </div>
 </div>
 
