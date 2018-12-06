@@ -1,17 +1,49 @@
+<!-- Title -->
 <div class="welcome-header">
-  Welcome To The Otter Shop Co.
+  Otter Shop Co.
 </div>
 
-<ngb-carousel class="text-center container" [showNavigationArrows]="false" [showNavigationIndicators]="false" *ngIf="images">
-  <ng-template ngbSlide *ngFor="let image of images">
-    <img class='img-main-carousel' [src]="image">
-    <div class="carousel-caption">
-      <h3>Otter Wear</h3>
-      <button>Shop Now</button>
-    </div>
-  </ng-template>
-</ngb-carousel>
+<!-- Carousel -->
+<div class="top_side">
+  <ngb-carousel class="text-center container" [showNavigationArrows]="false" [showNavigationIndicators]="false" *ngIf="images">
+    <ng-template ngbSlide *ngFor="let image of images">
+      <img class='img-main-carousel' [src]="image">
+      <div class="carousel-caption">
+        <h3>OTTER WEAR</h3>
+        <button [routerLink]="['/search']">Shop Now</button>
+      </div>
+    </ng-template>
+  </ngb-carousel>
 
+  <!-- About Us -->
+  <!-- Photo + Descripition -->
+  <div class="about">
+    <img class="about_img" src="https://cdn.shopify.com/s/files/1/2445/4975/files/SWEATERSweb2_1800x.jpg?v=1541543869">
+    <table>
+      <tr>
+        <td>
+          <div class="about_des">
+            <p class="title">Welcome to Ottershop Co.</p>
+            <p class="des">
+              We're proud to announce our upcoming exclusive most
+              greatest apparel yet. Our hopes to becoming a
+              better clothing brand is to provide a convenient
+              and inspiring experience for our customers. Our brand
+              reaches customers in stores and online.
+              and online.
+            </p>
+            <p class="des">
+              Our brands offer customers a wealth of styles and trends
+              within fashion. We work to improve of our apparel to always be relevant.
+            </p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- New Arrivals -->
 <div class="divided_line hp_midtitle txc t_dark" style="text-align: center;">
   <span>
     New Arrivals
@@ -20,6 +52,21 @@
 
 <div class="wrapper">
   <div class="clothing_images_parent" *ngFor="let i of [itemSVC.allItems.length - 1, itemSVC.allItems.length - 2, itemSVC.allItems.length - 3, itemSVC.allItems.length - 4]">
+    <img class="c_image_child" [src]="itemSVC.allItems[i].image" (click)="detailPageRedirect(itemSVC.allItems[i])">
+    <h5 class="c_name_child">{{itemSVC.allItems[i].name}}</h5>
+    <h3 class="c_price_child">Price: ${{itemSVC.allItems[i].price.toFixed(2)}}</h3>
+  </div>
+</div>
+
+<!-- Best Sellers -->
+<div class="divided_line hp_midtitle txc t_dark" style="text-align: center;">
+  <span>
+    Best Sellers
+  </span>
+</div>
+
+<div class="wrapper">
+  <div class="clothing_images_parent" *ngFor="let i of [0, 1, 2, 3]">
     <img class="c_image_child" [src]="itemSVC.allItems[i].image" (click)="detailPageRedirect(itemSVC.allItems[i])">
     <h5 class="c_name_child">{{itemSVC.allItems[i].name}}</h5>
     <h3 class="c_price_child">Price: ${{itemSVC.allItems[i].price.toFixed(2)}}</h3>

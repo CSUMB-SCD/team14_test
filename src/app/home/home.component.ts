@@ -12,8 +12,10 @@ import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 export class HomeComponent implements OnInit {
 
   images = [
-    'https://sgbonline.com/wp-content/uploads/2016/06/PacSun_062116.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/A1Gb7%2B-DJ5L._UX679_.jpg'
+    'https://anf.scene7.com/is/image/anf/A-20181129-USCA-D-HP-na?$marketing$&wid=1568',
+    'https://anf.scene7.com/is/image/anf/A-20181106-USCA-D-HP-jeans?$marketing$&wid=1568',
+    'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/1900x725-Brushed-Flannel-Navy-Banner-3_1900x725.jpg?v=1543889720',
+    'https://stg-ag-library.imgix.net/18_10/18_10_12/181012_HP_PremiumT_LS_M_hp_hero_01_lg-desktop.jpg?auto=format&w=960'
   ];
 
   total_items: number;
