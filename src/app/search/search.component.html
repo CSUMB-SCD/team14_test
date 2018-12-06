@@ -30,7 +30,7 @@
 <div class="search-items" *ngFor="let item of itemSVC.allItems">
 <!-- <div class="search-items" *ngFor="let item of allItems"> -->
   <h3 (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
-  <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
+  <img (click)="detailPageRedirect(item)" src='{{item.image}}' height="300" widtd="200" class="center"><br>
   <!-- Description: {{item.description}}<br> -->
   <h3 *ngIf="item.stock != 0">Stock: {{item.stock}}</h3>
   <h3>Price: ${{item.price.toFixed(2)}}</h3>
