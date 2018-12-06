@@ -65,6 +65,6 @@
 
   <h3>Name: {{name}}</h3><br>
   <h3>Shipped To: {{address}} , {{city}} , {{state}} , {{zip}}</h3><br>
-  <h3>Total: ${{(getTotal(confirmationCart)).toFixed(2)}}</h3><br>
+  <h3>Total: ${{checkout_total}}</h3><br>
   <button (click)="reset()">Continue</button>
   </div>
