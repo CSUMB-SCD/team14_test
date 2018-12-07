@@ -7,4 +7,10 @@
 
 .text-center {
   display: flex;
+  justify-content: space-around;
+}
+
+.order_confirm {
+  display: flex;
+  flex-direction: column;
 }
