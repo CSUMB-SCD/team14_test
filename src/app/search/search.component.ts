@@ -35,9 +35,8 @@ export class SearchComponent implements OnInit {
 
   addToCart(item: Item) {
     if (this.userSVC.mainUser != null) {
-      // console.log(item.id);
-      // const quant = $('#' + item.id).val();
       let updated =  false;
+
       for (const itm of this.userSVC.mainUser.cart) {
         if (itm.id === item.id) {
           itm.stock = 1;
@@ -50,9 +49,6 @@ export class SearchComponent implements OnInit {
       }
 
       if (!updated) {
-        // item.stock = Number(quant);
-        // item.totalPrice = item.price * Number(quant);
-        // tslint:disable-next-line:prefer-const
         let tempItm: Item = {} as Item;
         tempItm.id = item.id;
         tempItm.description = item.description;

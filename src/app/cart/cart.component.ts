@@ -103,16 +103,18 @@ export class CartComponent implements OnInit {
   updateCart(id: string) {
     if (this.userSVC.mainUser != null) {
 
-      const quant = Number($('#add').val());
+      const quant = Number($('#add' + id).val());
       let updated =  false;
 
       for (const itm of this.itemsSVC.allItems) {
         if (itm.id === id) {
           this.itemsSVC.showItemDetail = itm;
+          console.log(this.itemsSVC.showItemDetail.stock);
           break;
         }
       }
 
+      console.log(quant);
 
       if (quant <= 0 || quant > this.itemsSVC.showItemDetail.stock) {
         this.inValidQuant = true;
@@ -120,7 +122,8 @@ export class CartComponent implements OnInit {
         this.inValidQuant = false;
       }
 
-      if (!this.inValidQuant) {
+      if (this.inValidQuant === false) {
+        console.log('HERE');
         for (const itm of this.userSVC.mainUser.cart) {
           if (itm.id === this.itemsSVC.showItemDetail.id) {
             itm.stock = Number(quant);
