@@ -5,3 +5,10 @@
   flex: auto;
   justify-content: center;
 }
+
+/* The navigation bar */
+mat-toolbar {
+  position:fixed; // Ensures that it stays up top
+  z-index: 1;     // z-index = ensures stack order (Who should be in front)
+  top: 0px;       // There's space above, so 0 space
+}

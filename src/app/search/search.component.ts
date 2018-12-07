@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit {
       }
 
       if (!updated) {
-        let tempItm: Item = {} as Item;
+        const tempItm: Item = {} as Item;
         tempItm.id = item.id;
         tempItm.description = item.description;
         tempItm.image = item.image;
