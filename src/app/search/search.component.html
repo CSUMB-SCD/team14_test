@@ -49,13 +49,13 @@
 
   </mat-card-header>
 
-  <img mat-card-image (click)="detailPageRedirect(item)" src='{{item.image}}' height="300" widtd="200" class="center"alt="photo_of_clothes">
+  <img mat-card-image (click)="detailPageRedirect(item)" src='{{item.image}}' height="300px" width="200px" class="center"alt="photo_of_clothes">
 
   <mat-card-content class="card-content">
-      <h3 class="item-name" (click)="detailPageRedirect(item)">{{item.name}}</h3>
-      <h2 *ngIf="item.stock != 0">Stock: {{item.stock}}</h2>
-      <h3>Price: ${{item.price.toFixed(2)}}</h3>
-      <h2 *ngIf="item.stock == 0">Out of Stock!</h2>
+      <h3 class="item" (click)="detailPageRedirect(item)">{{item.name}}</h3>
+      <h2 class="item" *ngIf="item.stock != 0">Stock: {{item.stock}}</h2>
+      <h3 class="item">Price: ${{item.price.toFixed(2)}}</h3>
+      <h2 class="item" *ngIf="item.stock == 0">Out of Stock!</h2>
   </mat-card-content>
 
   <mat-card-actions>

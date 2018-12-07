@@ -1,3 +1,7 @@
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 .search-title{
   display:flex;
   justify-content: center;
@@ -67,7 +71,6 @@ mat-card {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }
 mat-card-actions{
   font-family: 'Josefin Sans', sans-serif;
@@ -76,7 +79,16 @@ mat-card-actions{
   justify-content: center;
   align-items: center;
 }
-.item-name{
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 20px;
+
+.item {
+  margin: auto;
+  margin-top: 5%;
+  font-size: 14px;
+  line-height: 1.42857;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: none;
 }
