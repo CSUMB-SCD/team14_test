@@ -21,19 +21,37 @@
   <br>
   <img (click)="onEmptyCart()" class="center" height="500" width="300" src="https://www.zoe.menu/assets/images/empty_cart.gif">
 </div>
-<div class="text-center" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut == false">
-  <div *ngFor="let item of userSVC.mainUser.cart">
-    <h3 style="font-family: Courier; text-align: center" (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
-    <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
-    <h5 style="font-family: Courier; text-align: center">Stock: {{getItemStock(item.id)}}</h5><br>
-    <h5 style="font-family: Courier; text-align: center">In-Cart: {{item.stock}}</h5><br>
-    <h5 style="font-family: Courier; text-align: center">Quantity</h5><input style="font-family: Courier; text-align: center" id="add{{item.id}}" type="text"><button (click)="updateCart(item.id)">Update</button><br>
-    <!-- <h5 style="font-family: Courier; text-align: center" *ngIf="inValidQuant" style="color: red">Invalid Input</h5><br> -->
-    <h5 style="font-family: Courier; text-align: center">Price: ${{(item.stock * item.price).toFixed(2)}}</h5><br>
-    <button (click)="removeItem(item)">Remove Item</button>
+<div class="cart" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut == false">
+  <div class="cart_item_wrapper">
+    <div class="cart_items" *ngFor="let item of userSVC.mainUser.cart">
+      <div class="cart_item_image">
+        <img (click)="detailPageRedirect(item)" src='{{item.image}}' height="300" widtd="200">
+      </div>
+      <div class="cart_item_info">
+        <div class="item_name_price">
+          <h4>{{item.name}}</h4>
+          <h4 class="price">${{(item.stock * item.price).toFixed(2)}}</h4>
+        </div>
+        <div class="stock_and_in_cart" style="color: #555; margin-top: 8%;">
+          <div class="titles">
+            <p>Stock:</p>
+            <p>In-Cart:</p>
+            <p>Total:</p>
+          </div>
+          <div class="values">
+            <p class="db_values">{{getItemStock(item.id)}}</p>
+            <p class="db_values">{{item.stock}}</p>
+            <p class="db_values">${{(item.price * item.stock).toFixed(2)}}</p>
+          </div>
+        </div>
+        <h5>Quantity</h5><input id="add{{item.id}}" type="text"><button (click)="updateCart(item.id)">Update</button><br>
+        <!-- <h5 style="font-family: Courier; text-align: center" *ngIf="inValidQuant" style="color: red">Invalid Input</h5><br> -->
+        <button (click)="removeItem(item)">Remove Item</button>
+      </div>
+    </div>
   </div>
   <div class="checkout_button">
-    <h3 style="font-family: Courier; text-align: center">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+    <h3>Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
     <button (click)="hitCheckOut()">Checkout</button>
   </div>
 </div>

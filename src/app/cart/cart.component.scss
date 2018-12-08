@@ -1,3 +1,7 @@
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -5,9 +9,49 @@
   width: 30%;
 }
 
-.text-center {
+.cart {
   display: flex;
   justify-content: space-around;
+}
+
+.cart_item_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 50%;
+}
+
+.cart_item_info {
+  flex-wrap: wrap;
+}
+
+.price {
+  margin-top: -3%;
+}
+
+.db_values {
+  width: 62%;
+}
+
+.stock_and_in_cart {
+  display: flex;
+  line-height: normal;
+}
+
+.titles {
+  margin-right: 40%;
+}
+
+.cart_items {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #c8c8c8;
+  margin-top: 2%;
+}
+
+.checkout_button {
+  border: 1px solid #c8c8c8;
+  padding: 10%;
 }
 
 .order_confirm {
