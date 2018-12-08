@@ -24,6 +24,9 @@
   <div class="cart_item_wrapper">
     <div class="cart_items" *ngFor="let item of userSVC.mainUser.cart">
 
+      <!-- Remove Item -->
+      <div class="tag-remove" (click)="removeItem(item)"></div>
+
       <!-- Cart image -->
       <div class="cart_item_image">
         <img (click)="detailPageRedirect(item)" src='{{item.image}}' height="300" widtd="200">
@@ -56,18 +59,17 @@
           </select>
           <div class="arrow-down"></div>
         </div>
-        <button (click)="removeItem(item)">Remove Item</button>
       </div>
-      </div>
+    </div>
 
       <!-- Remove Item -->
-      <div class="tag-remove"></div>
-    </div>
+      <!-- <div class="tag-remove"></div> -->
   </div>
-  <div class="checkout_button">
-    <h3>Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
-    <button (click)="hitCheckOut()">Checkout</button>
-  </div>
+</div>
+<div class="checkout_button">
+  <h3>Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+  <button (click)="hitCheckOut()">Checkout</button>
+</div>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut != false">
   <div>
