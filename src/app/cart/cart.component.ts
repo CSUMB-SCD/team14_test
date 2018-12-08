@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   og_checkout_total: number;
   checkout_total: string;
   confirm_num: number;
+  select_quantity = Array(10).fill(0).map((x, i) => i + 1);
 
   constructor(public userSVC: UsersService, private itemsSVC: ItemsService, private router: Router) {
     // console.log(userSVC.mainUser.cart.length);
@@ -130,7 +131,6 @@ export class CartComponent implements OnInit {
             // item.totalPrice = item.price * Number(quant);
             updated = true;
             this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
-            alert('Cart Updated');
             break;
           }
         }
@@ -149,7 +149,6 @@ export class CartComponent implements OnInit {
         tempItm.stock = quant;
         this.userSVC.mainUser.cart.push(tempItm);
         this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
-        alert('Cart Updated');
       }
     } else {
       alert('Login - In To Add Items To Cart');
