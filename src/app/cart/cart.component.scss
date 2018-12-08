@@ -85,6 +85,9 @@ select {
 .checkout_button {
   border: 1px solid #c8c8c8;
   padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .order_confirm {
@@ -100,6 +103,15 @@ select {
   display: flex;
   margin-left: 650px;
   position: absolute;
-  // margin-left: 100px;
-  // margin-top: 10px;
+}
+
+.total_amount {
+  display: flex;
+  line-height: normal;
+  justify-content: space-around;
+  margin: 50px;
+}
+
+.cart_total_title {
+  justify-content: center;
 }
