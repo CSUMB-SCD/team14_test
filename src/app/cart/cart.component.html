@@ -64,14 +64,26 @@
   </div>
 </div>
 <div class="checkout_button">
+  <div class="cart_total_title">
+    <div>
+      <h3>CART TOTAL</h3>
+    </div>
+  </div>
   <div class="promo_code">
-    <h3>Promo Code:</h3>
+    <p>Promo Code:</p>
     <input id="promo" type="text">
     <button (click)="applyPromo($event)">Apply</button>
   </div>
-  <h3>Total: ${{checkout_total}}</h3><br><br>
+  <div class="total_amount">
+    <div class="titles">
+      <p>TOTAL</p>
+    </div>
+    <div class="values">
+      <p class="db_values">${{checkout_total}}</p>
+    </div>
+  </div>
   <button (click)="hitCheckOut()">Checkout</button>
-</div>
+  </div>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut != false">
   <div>

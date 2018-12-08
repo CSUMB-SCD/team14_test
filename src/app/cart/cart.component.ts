@@ -41,7 +41,11 @@ export class CartComponent implements OnInit {
     this.checkoutOut = false;
   }
   ngOnInit() {
-    this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
+    if (this.userSVC.mainUser !== null && this.userSVC.mainUser.cart !== null) {
+      this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
+    } else {
+      this.og_checkout_total = 0;
+    }
     this.checkout_total = this.og_checkout_total.toFixed(2);
   }
 
