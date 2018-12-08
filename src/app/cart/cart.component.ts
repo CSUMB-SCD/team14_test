@@ -41,12 +41,12 @@ export class CartComponent implements OnInit {
     this.checkoutOut = false;
   }
   ngOnInit() {
+    this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
+    this.checkout_total = this.og_checkout_total.toFixed(2);
   }
 
   hitCheckOut() {
     this.checkoutOut = true;
-    this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
-    this.checkout_total = this.og_checkout_total.toFixed(2);
     this.confirm_num = Math.floor(Math.random() * Math.floor(100000000));
   }
 
@@ -54,6 +54,8 @@ export class CartComponent implements OnInit {
     const passed_in_promo = $('#promo').val();
     const is_promo_3 = passed_in_promo === 'a3wouldbegreat';
     const is_promo_2 = passed_in_promo === '2isokaytoo';
+
+    console.log('Promo: ', passed_in_promo);
 
     if (is_promo_3) {
       this.checkout_total = '0.00';

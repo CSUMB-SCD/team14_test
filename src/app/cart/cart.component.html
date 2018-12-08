@@ -61,13 +61,15 @@
         </div>
       </div>
     </div>
-
-      <!-- Remove Item -->
-      <!-- <div class="tag-remove"></div> -->
   </div>
 </div>
 <div class="checkout_button">
-  <h3>Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
+  <div class="promo_code">
+    <h3>Promo Code:</h3>
+    <input id="promo" type="text">
+    <button (click)="applyPromo($event)">Apply</button>
+  </div>
+  <h3>Total: ${{checkout_total}}</h3><br><br>
   <button (click)="hitCheckOut()">Checkout</button>
 </div>
 </div>
@@ -84,10 +86,6 @@
     <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
     <h3 style="font-family: Courier">Total: ${{checkout_total}}</h3><br><br>
     <button (click)="checkout()">Checkout</button><br><br>
-  </div>
-  <div class="promo_code">
-      Promo Code:         <input id="promo" type="text"><br>
-      <button (click)="applyPromo($event)">Apply</button>
   </div>
 </div>
 <div class="text-center" style="font-family: Courier; margin-top: 6%;" *ngIf="orderComplete">
