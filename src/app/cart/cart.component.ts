@@ -47,8 +47,6 @@ export class CartComponent implements OnInit {
 
   hitCheckOut() {
     this.checkoutOut = true;
-    this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
-    this.checkout_total = this.og_checkout_total.toFixed(2);
     this.confirm_num = Math.floor(Math.random() * Math.floor(100000000));
   }
 
