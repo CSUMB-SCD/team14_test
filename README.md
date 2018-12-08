@@ -2,6 +2,8 @@ LINK TO SITE: https://otterstore.herokuapp.com/
 
 NOTE: It takes a little while for the backend to wake up.
 
+NOTE: This GitHub is for the Angular Side of the project
+
 LINK TO USERS DB: 
 
         - GitHub Link : https://github.com/MarcoAguilera/SpringBootUsersDB
