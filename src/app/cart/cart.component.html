@@ -7,7 +7,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <h1 style="font-family:Courier; text-align: center; margin-top: 6%;" *ngIf="!orderComplete">Cart</h1>
-
 <div style="text-align: center" *ngIf="inValidQuant" class="alert alert-danger">
   <strong>Attention!</strong> Incorrect Quantity
 </div>
@@ -44,8 +43,14 @@
             <p class="db_values">${{(item.price * item.stock).toFixed(2)}}</p>
           </div>
         </div>
-        <h5>Quantity</h5><input id="add{{item.id}}" type="text"><button (click)="updateCart(item.id)">Update</button><br>
-        <!-- <h5 style="font-family: Courier; text-align: center" *ngIf="inValidQuant" style="color: red">Invalid Input</h5><br> -->
+
+        <!-- Change Quantity using a 'Menu' -->
+        <div class="quantity_menu">
+          <select id="add{{item.id}}" (change)="updateCart(item.id)" [value]='item.stock'>
+              <option *ngFor="let i of select_quantity" [value]="i" [label]="i">{{i}}</option>
+          </select>
+          <div class="arrow-down"></div>
+        </div>
         <button (click)="removeItem(item)">Remove Item</button>
       </div>
     </div>
