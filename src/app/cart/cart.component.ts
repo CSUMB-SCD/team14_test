@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   og_checkout_total: number;
   checkout_total: string;
   confirm_num: number;
+  select_quantity = Array(10).fill(0).map((x, i) => i + 1);
 
   constructor(public userSVC: UsersService, private itemsSVC: ItemsService, private router: Router) {
     // console.log(userSVC.mainUser.cart.length);
@@ -40,12 +41,16 @@ export class CartComponent implements OnInit {
     this.checkoutOut = false;
   }
   ngOnInit() {
+    if (this.userSVC.mainUser !== null && this.userSVC.mainUser.cart !== null) {
+      this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
+    } else {
+      this.og_checkout_total = 0;
+    }
+    this.checkout_total = this.og_checkout_total.toFixed(2);
   }
 
   hitCheckOut() {
     this.checkoutOut = true;
-    this.og_checkout_total = this.getTotal(this.userSVC.mainUser.cart);
-    this.checkout_total = this.og_checkout_total.toFixed(2);
     this.confirm_num = Math.floor(Math.random() * Math.floor(100000000));
   }
 
@@ -53,6 +58,8 @@ export class CartComponent implements OnInit {
     const passed_in_promo = $('#promo').val();
     const is_promo_3 = passed_in_promo === 'a3wouldbegreat';
     const is_promo_2 = passed_in_promo === '2isokaytoo';
+
+    console.log('Promo: ', passed_in_promo);
 
     if (is_promo_3) {
       this.checkout_total = '0.00';
@@ -130,7 +137,6 @@ export class CartComponent implements OnInit {
             // item.totalPrice = item.price * Number(quant);
             updated = true;
             this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
-            alert('Cart Updated');
             break;
           }
         }
@@ -149,7 +155,6 @@ export class CartComponent implements OnInit {
         tempItm.stock = quant;
         this.userSVC.mainUser.cart.push(tempItm);
         this.userSVC.updateUser(this.userSVC.mainUser).subscribe(data => {console.log(data); });
-        alert('Cart Updated');
       }
     } else {
       alert('Login - In To Add Items To Cart');

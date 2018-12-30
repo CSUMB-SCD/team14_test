@@ -7,7 +7,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <h1 style="font-family:Courier; text-align: center; margin-top: 6%;" *ngIf="!orderComplete">Cart</h1>
-
 <div style="text-align: center" *ngIf="inValidQuant" class="alert alert-danger">
   <strong>Attention!</strong> Incorrect Quantity
 </div>
@@ -21,20 +20,69 @@
   <br>
   <img (click)="onEmptyCart()" class="center" height="500" width="300" src="https://www.zoe.menu/assets/images/empty_cart.gif">
 </div>
-<div class="text-center" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut == false">
-  <div *ngFor="let item of userSVC.mainUser.cart">
-    <h3 style="font-family: Courier; text-align: center" (click)="detailPageRedirect(item)">{{item.name}}</h3><br>
-    <img src='{{item.image}}' height="300" widtd="200" class="center"><br>
-    <h5 style="font-family: Courier; text-align: center">Stock: {{getItemStock(item.id)}}</h5><br>
-    <h5 style="font-family: Courier; text-align: center">In-Cart: {{item.stock}}</h5><br>
-    <h5 style="font-family: Courier; text-align: center">Quantity</h5><input style="font-family: Courier; text-align: center" id="add{{item.id}}" type="text"><button (click)="updateCart(item.id)">Update</button><br>
-    <!-- <h5 style="font-family: Courier; text-align: center" *ngIf="inValidQuant" style="color: red">Invalid Input</h5><br> -->
-    <h5 style="font-family: Courier; text-align: center">Price: ${{(item.stock * item.price).toFixed(2)}}</h5><br>
-    <button (click)="removeItem(item)">Remove Item</button>
+<div class="cart" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut == false">
+  <div class="cart_item_wrapper">
+    <div class="cart_items" *ngFor="let item of userSVC.mainUser.cart">
+
+      <!-- Remove Item -->
+      <div class="tag-remove" (click)="removeItem(item)"></div>
+
+      <!-- Cart image -->
+      <div class="cart_item_image">
+        <img (click)="detailPageRedirect(item)" src='{{item.image}}' height="300" widtd="200">
+      </div>
+
+      <!-- Cart Info -->
+      <div class="cart_item_info">
+        <div class="test">
+        <div class="item_name_price">
+          <h4>{{item.name}}</h4>
+          <h4 class="price">${{(item.stock * item.price).toFixed(2)}}</h4>
+        </div>
+        <div class="stock_and_in_cart" style="color: #555; margin-top: 8%;">
+          <div class="titles">
+            <p>Stock:</p>
+            <p>In-Cart:</p>
+            <p>Total:</p>
+          </div>
+          <div class="values">
+            <p class="db_values">{{getItemStock(item.id)}}</p>
+            <p class="db_values">{{item.stock}}</p>
+            <p class="db_values">${{(item.price * item.stock).toFixed(2)}}</p>
+          </div>
+        </div>
+
+        <!-- Change Quantity using a 'Menu' -->
+        <div class="quantity_menu">
+          <select id="add{{item.id}}" (change)="updateCart(item.id)" [value]='item.stock'>
+              <option *ngFor="let i of select_quantity" [value]="i" [label]="i">{{i}}</option>
+          </select>
+          <div class="arrow-down"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="checkout_button">
-    <h3 style="font-family: Courier; text-align: center">Total: ${{getTotal(userSVC.mainUser.cart).toFixed(2)}}</h3><br><br>
-    <button (click)="hitCheckOut()">Checkout</button>
+</div>
+<div class="checkout_button">
+  <div class="cart_total_title">
+    <div>
+      <h3>CART TOTAL</h3>
+    </div>
+  </div>
+  <div class="promo_code">
+    <p>Promo Code:</p>
+    <input id="promo" type="text">
+    <button (click)="applyPromo($event)">Apply</button>
+  </div>
+  <div class="total_amount">
+    <div class="titles">
+      <p>TOTAL</p>
+    </div>
+    <div class="values">
+      <p class="db_values">${{checkout_total}}</p>
+    </div>
+  </div>
+  <button (click)="hitCheckOut()">Checkout</button>
   </div>
 </div>
 <div class="text-center" style="font-family: Courier" *ngIf="userSVC.mainUser != null && userSVC.mainUser.cart.length > 0 && orderComplete == false && checkoutOut != false">
@@ -50,10 +98,6 @@
     <p *ngIf="inCorrectInfo" style="color:red;">Please Fill In All Fields</p>
     <h3 style="font-family: Courier">Total: ${{checkout_total}}</h3><br><br>
     <button (click)="checkout()">Checkout</button><br><br>
-  </div>
-  <div class="promo_code">
-      Promo Code:         <input id="promo" type="text"><br>
-      <button (click)="applyPromo($event)">Apply</button>
   </div>
 </div>
 <div class="text-center" style="font-family: Courier; margin-top: 6%;" *ngIf="orderComplete">

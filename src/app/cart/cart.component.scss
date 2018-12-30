@@ -1,3 +1,7 @@
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -5,12 +9,109 @@
   width: 30%;
 }
 
-.text-center {
+.cart {
   display: flex;
+  justify-content: space-around;
+}
+
+.cart_item_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 700px;
+}
+
+// Menu Button
+select {
+  padding: 0 30px 0 10px;
+  text-align: center;
+  -webkit-appearance: none;
+  padding: 11px 45px 11px 10px;
+  line-height: 1.4;
+  border: 1px solid #dadada;
+  background-color: white;
+  flex-shrink: 1
+}
+
+//  - Part of Menu Button
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-top: 5px solid rgb(66, 61, 61);
+  z-index: 1;
+  position: absolute;
+  margin-left: 45px;
+}
+
+.quantity_menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cart_item_info {
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+.price {
+  margin-top: -3%;
+}
+
+.db_values {
+  width: 62%;
+}
+
+.stock_and_in_cart {
+  display: flex;
+  line-height: normal;
+}
+
+.titles {
+  margin-right: 40%;
+}
+
+.cart_items {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #c8c8c8;
+  align-items: flex-start;
+}
+
+// Border around checkout button
+.checkout_button {
+  border: 1px solid #c8c8c8;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 
 .order_confirm {
   display: flex;
   flex-direction: column;
+}
+
+// Remove Button
+.tag-remove:before {
+  content: 'x'; // here is your X(cross) sign.
+  color: rgb(107, 101, 101);
+  font-size: 30px;
+  display: flex;
+  margin-left: 650px;
+  position: absolute;
+}
+
+.total_amount {
+  display: flex;
+  line-height: normal;
+  justify-content: space-around;
+  margin: 50px;
+}
+
+.cart_total_title {
+  justify-content: center;
 }
